@@ -4,14 +4,16 @@ using EFCoreSamples;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EFCoreSamples.Migrations
 {
     [DbContext(typeof(EFCoreSamplesDbContext))]
-    partial class EFCoreSamplesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210430213527_One2ManyConsoleUser")]
+    partial class One2ManyConsoleUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace EFCoreSamples
 {
@@ -8,5 +9,6 @@ namespace EFCoreSamples
         public string Name { get; set; }
         public DateTime CreationDate { get; set; }
         public PlaystationPlus PlaystationPlus { get; set; }
+        public List<Console> Consoles { get; set; } = new List<Console>();
     }
 }
