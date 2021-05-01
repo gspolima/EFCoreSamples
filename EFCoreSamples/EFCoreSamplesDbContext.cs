@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace EFCoreSamples
 {
@@ -7,6 +8,7 @@ namespace EFCoreSamples
         public DbSet<User> Users { get; set; }
         public DbSet<PlaystationPlus> PlaystationPlus { get; set; }
         public DbSet<Console> Consoles { get; set; }
+        public DbSet<Trophy> Trophies { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -38,6 +40,15 @@ namespace EFCoreSamples
                 .Property(c => c.SerialNumber)
                 .IsRequired()
                 .HasDefaultValueSql("NEWID()");
+
+            modelBuilder.Entity<Trophy>()
+                .HasKey(t => t.TrophyId);
+
+            modelBuilder.Entity<Trophy>()
+                .Property(t => t.Rarity)
+                .HasConversion(
+                    v => v.ToString(),
+                    v => (TrophyRarity)Enum.Parse(typeof(TrophyRarity), v));
         }
     }
 }
